@@ -1,0 +1,147 @@
+/**
+ * ============================================================================
+ * ESTILOS GLOBALES DE LA APLICACIÓN
+ * ============================================================================
+ * Este archivo contiene todos los estilos CSS globales de la aplicación.
+ * Incluye variables CSS personalizadas, configuración de tema, scrollbars
+ * personalizados y clases utilitarias reutilizables.
+ * 
+ * Secciones:
+ * - Importación de TailwindCSS
+ * - Variables CSS personalizadas
+ * - Configuración de tema claro/oscuro
+ * - Estilos de scrollbar personalizado
+ * - Clases utilitarias de componentes
+ */
+
+/* ============================================================================
+   IMPORTACIÓN DE TAILWINDCSS
+   ============================================================================ */
+@import "tailwindcss";
+
+/* ============================================================================
+   VARIABLES CSS GLOBALES
+   ============================================================================
+   Define el esquema de colores principal de la aplicación basado en la
+   identidad visual de la institución.
+   ============================================================================ */
+:root {
+  /* Colores de fondo y texto base */
+  --background: #ffffff;     /* Fondo principal blanco */
+  --foreground: #171717;     /* Texto principal negro */
+  
+  /* Colores primarios (rojos institucionales) */
+  --primary: #DB1515;        /* Rojo principal */
+  --primary-dark: #9E0B0F;   /* Rojo oscuro para hover/active */
+  
+  /* Colores secundarios (azules institucionales) */
+  --secondary: #2C3E8C;      /* Azul principal */
+  --secondary-light: #4D61AA; /* Azul claro */
+  
+  /* Color de acento */
+  --accent: #FBB80E;         /* Amarillo/dorado para destacados */
+}
+
+/* ============================================================================
+   CONFIGURACIÓN DE TEMA TAILWINDCSS
+   ============================================================================
+   Conecta las variables CSS personalizadas con el sistema de temas de Tailwind
+   ============================================================================ */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* ============================================================================
+   SOPORTE PARA TEMA OSCURO
+   ============================================================================
+   Ajusta los colores automáticamente cuando el usuario prefiere tema oscuro
+   ============================================================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;   /* Fondo oscuro para modo nocturno */
+    --foreground: #ededed;   /* Texto claro para modo nocturno */
+  }
+}
+
+/* ============================================================================
+   ESTILOS BASE DEL BODY
+   ============================================================================ */
+body {
+  background: var(--background);  /* Aplicar color de fondo */
+  color: var(--foreground);       /* Aplicar color de texto */
+  font-family: var(--font-sans);  /* Aplicar fuente principal */
+}
+
+/* ============================================================================
+   SCROLLBAR PERSONALIZADO
+   ============================================================================
+   Define el aspecto visual de las barras de desplazamiento en navegadores
+   basados en WebKit (Chrome, Safari, Edge)
+   ============================================================================ */
+
+/* Dimensiones del scrollbar */
+::-webkit-scrollbar {
+  width: 8px;   /* Ancho del scrollbar vertical */
+  height: 8px;  /* Alto del scrollbar horizontal */
+}
+
+/* Fondo del track del scrollbar */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;     /* Color de fondo gris claro */
+  border-radius: 10px;     /* Bordes redondeados */
+}
+
+/* Estilo del thumb (la parte que se arrastra) */
+::-webkit-scrollbar-thumb {
+  background: var(--primary);  /* Color rojo institucional */
+  border-radius: 10px;         /* Bordes redondeados */
+}
+
+/* Efecto hover en el thumb */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);  /* Color más oscuro al pasar el mouse */
+}
+
+/* ============================================================================
+   CLASES UTILITARIAS PERSONALIZADAS
+   ============================================================================
+   Componentes CSS reutilizables que combinan múltiples utilidades de Tailwind
+   para mantener consistencia en el diseño
+   ============================================================================ */
+
+/* Tarjeta estándar de la aplicación */
+.salesian-card {
+  @apply bg-white rounded-lg shadow-md transition-all duration-200 hover:shadow-lg;
+}
+
+/* Botón principal con gradiente institucional */
+.salesian-button {
+  @apply px-4 py-2 bg-gradient-to-r from-[#DB1515] to-[#9E0B0F] text-white rounded-md hover:from-[#C41313] hover:to-[#8A090C] transition-all duration-200 font-medium shadow hover:shadow-md;
+}
+
+/* Campo de entrada estándar */
+.salesian-input {
+  @apply w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#DB1515] transition-all duration-200;
+}
+
+/* Select/dropdown estándar */
+.salesian-select {
+  @apply w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#DB1515] appearance-none bg-white transition-all duration-200;
+}
+
+/* Título de sección con línea inferior */
+.salesian-header {
+  @apply text-2xl font-bold text-gray-800 border-b-2 border-[#DB1515] pb-2 inline-block;
+}
+
+/* ============================================================================
+   ESTILOS ESPECÍFICOS DE COMPONENTES
+   ============================================================================ */
+
+/* Altura mínima para filas de tabla consistente */
+.custom-table-row {
+  min-height: 3rem;
+}
